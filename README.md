@@ -1,178 +1,229 @@
 # NLP-Based-Disaster-Info-Extraction-Summarization
 NLP-based system for extracting disaster-related information and generating automated summaries from multi-source text data like social media and news. 
-🌍 DisasterNLP: Intelligent Disaster Information Extraction & Summarization
-🚀 Project Overview
-This project implements a Natural Language Processing (NLP)-based intelligent system that extracts critical disaster-related information and generates automated summaries from multi-source text data such as Reddit and news feeds.
+# 🌍 DisasterNLP: Information Extraction & Summarization System
 
-The system helps transform unstructured disaster data into actionable insights, enabling faster and more effective decision-making during emergencies.
+## 🚀 Overview
 
-🧩 Complete System Pipeline
-The project follows a 6-step NLP pipeline:
+This project implements an **NLP-based intelligent system** that extracts disaster-related information and generates summaries from multi-source text data.
 
-🔹 Step 1: Data Collection (Multisource)
-Data is collected from:
+The system processes data from **Reddit and News sources**, extracts key entities, classifies messages, assigns priority, and generates concise summaries for disaster response.
 
-Reddit (citizen reports)
+---
 
-News RSS feeds
+## 📂 Project Structure
 
-🔍 Keywords Used:
-flood, earthquake, cyclone, landslide, fire, collapse, rescue, trapped
-📌 Extracted Signals:
-Disaster type
+```bash
+Project/
+│── data_collection.py              # Collect data from Reddit & RSS
+│── preprocessing.py                # Clean and preprocess text
+│── ner_extraction.py               # Named Entity Recognition
+│── classification.py               # Message classification + priority
+│── summarization.py                # Text summarization (BART/T5)
+│── dashboard.py                   # Streamlit dashboard
 
-Location mentions
+│── disaster_raw_data.csv
+│── disaster_cleaned_data.csv
+│── disaster_entities.csv
+│── classified_disaster_data.csv
+│── disaster_summarized_data.csv
 
-Casualties
+│── entity_analysis.py
+│── location_analysis.py
+│── visualization.py
 
-Urgent needs
+│── entity_distribution.png
+│── top_locations.png
+│── top_organizations.png
 
-🔹 Step 2: Text Preprocessing
-Performed using NLTK, SpaCy, Regex
-
-✔ Lowercasing
-✔ URL removal
-✔ Hashtag removal
-✔ Emoji removal
-✔ Stopword removal
-✔ Tokenization
-
-➡️ Output: Cleaned and structured text dataset
-
-🔹 Step 3: Information Extraction (NER)
-Using SpaCy Pretrained Model
-
-Extracted Entities:
-
-📍 Location
-
-🌪 Disaster Type
-
-👥 Casualties
-
-🏗 Infrastructure Damage
-
-Example:
-Location: Chennai
-Disaster: Flood
-Casualties: 5 injured
-Damage: Bridge collapsed
-🔹 Step 4: Message Classification
-Messages are classified into:
-
-🚨 Emergency Request
-
-🏚 Damage Report
-
-ℹ General Information
-
-🤝 Relief Update
-
-Approach:
-Rule-based keyword classification (current)
-
-Extendable to BERT-based classifier (future)
-
-🔥 Priority Levels:
-High
-
-Medium
-
-Low
-
-🔹 Step 5: Text Summarization
-Using Transformer Models (BART / T5)
-
-Summarizes high-priority messages
-
-Reduces information overload
-
-Example Output:
-Severe flooding in Chennai has trapped residents and caused infrastructure damage. Immediate rescue operations required.
-
-🔹 Step 6: Output Dashboard
-Built using Streamlit
-
-📊 Dashboard Displays:
-Extracted Entities
-
-Message Category
-
-Priority Level
-
-Generated Summary
-
-🧠 Tech Stack
-Python
-
-NLTK
-
-SpaCy
-
-Scikit-learn
-
-Hugging Face Transformers (BART/T5)
-
-Pandas
-
-Streamlit
-
-📂 Project Structure
-DisasterNLP/
-│── data/
-│── preprocessing/
-│── ner/
-│── classification/
-│── summarization/
-│── dashboard/
-│── app.py
 │── requirements.txt
-│── README.md
-💡 Key Features
-Multi-source disaster data collection
+```
 
-Real-time-like processing pipeline
+---
 
-Entity extraction (NER)
+## 🔄 Complete Workflow
 
-Disaster classification with priority tagging
+### 🔹 1. Data Collection
 
-Transformer-based summarization
+* Sources:
 
-Interactive dashboard
+  * Reddit (citizen reports)
+  * News RSS feeds
+* Keywords:
 
-⚠️ Limitations
-Limited real-time streaming
+  ```
+  flood, earthquake, cyclone, landslide, fire, collapse, rescue, trapped
+  ```
 
-Rule-based classification (initial version)
+---
 
-Depends on data quality
+### 🔹 2. Data Preprocessing
 
-English-only processing
+Performed using:
 
-🚀 Future Improvements
-Real-time Twitter integration (when API available)
+* NLTK
+* SpaCy
+* Regex
 
-Fine-tuned BERT classification
+Steps:
 
-Multilingual support
+* Lowercasing
+* Removing URLs, hashtags, emojis
+* Stopword removal
+* Tokenization
 
-GIS-based visualization
+➡ Output: `disaster_cleaned_data.csv`
 
-Abstractive summarization improvements
+---
 
-🏁 Conclusion
-This project demonstrates how NLP can be used to:
+### 🔹 3. Information Extraction (NER)
 
-Extract critical disaster insights
+Using **SpaCy**
 
-Reduce information overload
+Extracts:
 
-Support emergency response systems
+* Location
+* Disaster type
+* Casualties
+* Damage
 
-It provides a scalable foundation for intelligent disaster management systems.
+➡ Output: `disaster_entities.csv`
 
-👩‍💻 Authors
-Sabana Asmi G
+---
 
-Yuvashree M
+### 🔹 4. Classification
+
+Categories:
+
+* Emergency Request
+* Damage Report
+* General Information
+* Relief Update
+
+Also assigns:
+
+* 🔥 High Priority
+* ⚠ Medium Priority
+* 🟢 Low Priority
+
+➡ Output: `classified_disaster_data.csv`
+
+---
+
+### 🔹 5. Summarization
+
+Using **Transformer Models (BART/T5)**
+
+* Summarizes high-priority messages
+* Reduces information overload
+
+➡ Output: `disaster_summarized_data.csv`
+
+---
+
+### 🔹 6. Visualization & Dashboard
+
+Built using:
+
+* Streamlit
+* Matplotlib
+
+Displays:
+
+* Entity distribution
+* Top locations
+* Top organizations
+* Final summarized insights
+
+---
+
+## 🧠 Tech Stack
+
+* Python
+* NLTK
+* SpaCy
+* Scikit-learn
+* Transformers (BART/T5)
+* Pandas
+* Streamlit
+
+---
+
+## ▶️ How to Run
+
+### 1. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Install models
+
+```bash
+python -m spacy download en_core_web_sm
+python -m nltk.downloader punkt stopwords
+```
+
+### 3. Run pipeline
+
+```bash
+python data_collection.py
+python preprocessing.py
+python ner_extraction.py
+python classification.py
+python summarization.py
+```
+
+### 4. Run dashboard
+
+```bash
+streamlit run dashboard.py
+```
+
+---
+
+## 📊 Outputs
+
+* Cleaned dataset
+* Extracted entities
+* Classified messages with priority
+* Summarized disaster reports
+* Visualization graphs
+
+---
+
+## 💡 Key Features
+
+✔ Multi-source data collection
+✔ End-to-end NLP pipeline
+✔ Entity extraction (NER)
+✔ Disaster classification
+✔ Priority detection
+✔ Transformer-based summarization
+✔ Interactive dashboard
+
+---
+
+## ⚠️ Limitations
+
+* Rule-based classification
+* Limited real-time capability
+* English-only dataset
+
+---
+
+## 🚀 Future Enhancements
+
+* BERT-based classification
+* Real-time streaming data
+* Multilingual support
+* GIS integration
+
+---
+
+## 👩‍💻 Authors
+
+* Sabana Asmi G
+* Yuvashree M
+
+---
+

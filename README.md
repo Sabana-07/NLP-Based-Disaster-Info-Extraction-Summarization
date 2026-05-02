@@ -14,28 +14,18 @@ The system processes data from **Reddit and News sources**, extracts key entitie
 
 ```bash
 Project/
-│── data_collection.py              # Collect data from Reddit & RSS
-│── preprocessing.py                # Clean and preprocess text
-│── ner_extraction.py               # Named Entity Recognition
-│── classification.py               # Message classification + priority
-│── summarization.py                # Text summarization (BART/T5)
-│── dashboard.py                   # Streamlit dashboard
 
-│── disaster_raw_data.csv
-│── disaster_cleaned_data.csv
-│── disaster_entities.csv
-│── classified_disaster_data.csv
-│── disaster_summarized_data.csv
 
-│── entity_analysis.py
-│── location_analysis.py
-│── visualization.py
+│── data_collection.py           # Collect data (Reddit + RSS)
+│── preprocessing.py             # Text cleaning
+│── ner_extraction.py            # Named Entity Recognition
+│── classification.py            # Category + Priority
+│── summarization.py             # Text summarization
+│── dashboard.py                 # Visualization (Streamlit)
 
-│── entity_distribution.png
-│── top_locations.png
-│── top_organizations.png
 
-│── requirements.txt
+
+│── requirements.txt             # Dependencies
 ```
 
 ---

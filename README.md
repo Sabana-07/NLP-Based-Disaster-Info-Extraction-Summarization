@@ -19,6 +19,7 @@ Project/
 │── data_collection.py           # Collect data (Reddit + RSS)
 │── preprocessing.py             # Text cleaning
 │── ner_extraction.py            # Named Entity Recognition
+|── entity_analysis.py           # Analyzing entities
 │── classification.py            # Category + Priority
 │── summarization.py             # Text summarization
 │── dashboard.py                 # Visualization (Streamlit)
